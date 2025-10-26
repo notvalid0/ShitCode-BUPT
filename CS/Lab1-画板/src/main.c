@@ -36,6 +36,8 @@ int main(void)
     bool isFirstDraw = true;
     Vector2 previousMousePos = {0};
 
+    int prevColor = 0;
+
     while (!WindowShouldClose()) {  //windowshouldclose为内置函数
         Vector2 mousePos = GetMousePosition();
         if (! IsMouseButtonDown(MOUSE_RIGHT_BUTTON)){
@@ -53,12 +55,56 @@ int main(void)
             }//限制颜色在10种内
         }
 
+        if (IsKeyPressed(KEY_ONE)) {
+            colorUsed = 0;        
+        }
+
+        else if (IsKeyPressed(KEY_TWO)) {
+            colorUsed = 1;        
+        }
+
+        else if (IsKeyPressed(KEY_THREE)) {
+            colorUsed = 2;        
+        }
+
+        else if (IsKeyPressed(KEY_FOUR)) {
+            colorUsed = 3;        
+        }
+
+        else if (IsKeyPressed(KEY_FIVE)) {
+            colorUsed = 4;        
+        }
+
+        else if (IsKeyPressed(KEY_SIX)) {
+            colorUsed = 5;        
+        }
+
+        else if (IsKeyPressed(KEY_SEVEN)) {
+            colorUsed = 6;        
+        }
+
+        else if (IsKeyPressed(KEY_EIGHT)) {
+            colorUsed = 7;        
+        }
+
+        else if (IsKeyPressed(KEY_NINE)) {
+            colorUsed = 8;        
+        }
+
+        else if (IsKeyPressed(KEY_ZERO)) {
+            colorUsed = 9;        
+        }
+
+        if (IsMouseButtonPressed(MOUSE_RIGHT_BUTTON)){
+            prevColor = colorUsed;
+        }
+
         if (IsMouseButtonDown(MOUSE_RIGHT_BUTTON)) {
             colorUsed = 10;
         }
 
-        if (IsKeyPressed(KEY_D)){
-            colorUsed = 0;
+        if (IsMouseButtonReleased(MOUSE_BUTTON_RIGHT)){
+            colorUsed = prevColor;
         }
         
         brushSize += GetMouseWheelMove()*5;//通过滚轮调控笔刷大小
@@ -146,7 +192,7 @@ int main(void)
         ClearBackground(RAYWHITE);
         
         if (!startDraw) {
-            DrawText("PRESS [LEFT_MOUSE] TO DRAW\nPRESS [CTRL] + [C] TO RENEW THE CANVAS\nPRESS [RIGHT_MOUSE] TO EREASE\nPRESS [LEFT] OR [RIGHT] TO SWITCH COLOR\nPRESS [UP] AND [DOWN] TO ADJUST THE RADIUS\n           (OR USING THE MOUSE WHEEL)\nPRESS [S] TO SAVE\nPRESS [ENTER] TO START DRAWING", GetScreenWidth()/2 - MeasureText("PRESS [UP] AND [DOWN] TO ADJUST THE RADIUS", 20)/2, GetScreenHeight()/2 - 50, 20, GRAY);
+            DrawText("PRESS [LEFT_MOUSE] TO DRAW\nPRESS [CTRL] + [C] TO RENEW THE CANVAS\nPRESS [RIGHT_MOUSE] TO EREASE\nPRESS [LEFT] OR [RIGHT] TO SWITCH COLOR\n          or use [1]-[9]\nPRESS [UP] AND [DOWN] TO ADJUST THE RADIUS\n           (OR USING THE MOUSE WHEEL)\nPRESS [S] TO SAVE\nPRESS [ENTER] TO START DRAWING", GetScreenWidth()/2 - MeasureText("PRESS [UP] AND [DOWN] TO ADJUST THE RADIUS", 20)/2, GetScreenHeight()/2 - 50, 20, GRAY);
         }
         else if (startDraw) {
             DrawTextureRec(mousecanvas.texture, 
