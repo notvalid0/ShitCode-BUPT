@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include "raylib.h"
 #include <sys/types.h>
@@ -39,14 +40,13 @@ int main(void)
 
     int prevColor = 0;
 
+    bool hasSaved = false;
     bool showLoadMessage = false;
+    FILE *f = fopen("鼠鼠作品.png", "rb");
+    if (f) { fclose(f); hasSaved = true; showLoadMessage = true;}
 
     while (!WindowShouldClose()) {  //windowshouldclose为内置函数
         Vector2 mousePos = GetMousePosition();
-
-        bool hasSaved = false;
-        FILE *f = fopen("鼠鼠作品.png", "rb");
-        if (f) { fclose(f); hasSaved = true; }
 
         if (! IsMouseButtonDown(MOUSE_RIGHT_BUTTON)){
             if (IsKeyPressed(KEY_LEFT)) {
@@ -203,24 +203,27 @@ int main(void)
             DrawText("PRESS [LEFT_MOUSE] TO DRAW\nPRESS [CTRL] + [C] TO RENEW THE CANVAS\nPRESS [RIGHT_MOUSE] TO EREASE\nPRESS [LEFT] OR [RIGHT] TO SWITCH COLOR\n          or use [1]-[9]\nPRESS [UP] AND [DOWN] TO ADJUST THE RADIUS\n           (OR USING THE MOUSE WHEEL)\nPRESS [S] TO SAVE\nPRESS [ENTER] TO START DRAWING", GetScreenWidth()/2 - MeasureText("PRESS [UP] AND [DOWN] TO ADJUST THE RADIUS", 20)/2, GetScreenHeight()/2 - 50, 20, GRAY);
         }
         else if (startDraw) {
+            DrawTextureRec(mousecanvas.texture, 
+                          (Rectangle){0, 0, mousecanvas.texture.width, -mousecanvas.texture.height}, 
+                          (Vector2){0, 0}, 
+                          WHITE);
+
             if (hasSaved){
-                if (showLoadMessage){
+                if(showLoadMessage){
                 DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(RAYWHITE, 0.8f));
                 DrawRectangle(0, 150, GetScreenWidth(), 80, BLACK);
                 DrawText("Saved Work Detected, Wanna Load It? (Y/n)", 150, 180, 20, RAYWHITE);
                 }
-                if (IsKeyPressed(KEY_Y) || IsKeyPressed(KEY_LEFT_SHIFT) && IsKeyPressed(KEY_Y)){
+
+                if (IsKeyPressed(KEY_Y)){
                     Image img = LoadImage("鼠鼠作品.png");
                     BeginTextureMode(mousecanvas);
                     DrawTexture(LoadTextureFromImage(img), 0, 0, RAYWHITE);
                     EndTextureMode();
                     UnloadImage(img);
+                    showLoadMessage = false;
                 }
             }
-            DrawTextureRec(mousecanvas.texture, 
-                          (Rectangle){0, 0, mousecanvas.texture.width, -mousecanvas.texture.height}, 
-                          (Vector2){0, 0}, 
-                          WHITE);
         
             DrawCircle((int)mousePos.x, (int)mousePos.y, brushSize, colors[colorUsed]);
 
