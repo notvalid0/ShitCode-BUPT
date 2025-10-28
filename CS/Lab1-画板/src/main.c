@@ -45,6 +45,9 @@ int main(void)
     FILE *f = fopen("鼠鼠作品.png", "rb");
     if (f) { fclose(f); hasSaved = true; showLoadMessage = true;}
 
+    bool showSuccessMessage = false;
+    int showSuccessMessageTimer = 0;
+
     while (!WindowShouldClose()) {  //windowshouldclose为内置函数
         Vector2 mousePos = GetMousePosition();
 
@@ -170,7 +173,7 @@ int main(void)
 
         if (showSaveMessage)
         {
-            // On saving, show a full screen message for 2 seconds
+            // 240为240frames
             saveMessageCounter++;
             if (saveMessageCounter > 240)
             {
@@ -200,7 +203,7 @@ int main(void)
         ClearBackground(RAYWHITE);
         
         if (!startDraw) {
-            DrawText("PRESS [LEFT_MOUSE] TO DRAW\nPRESS [CTRL] + [C] TO RENEW THE CANVAS\nPRESS [RIGHT_MOUSE] TO EREASE\nPRESS [LEFT] OR [RIGHT] TO SWITCH COLOR\n          or use [1]-[9]\nPRESS [UP] AND [DOWN] TO ADJUST THE RADIUS\n           (OR USING THE MOUSE WHEEL)\nPRESS [S] TO SAVE\nPRESS [ENTER] TO START DRAWING", GetScreenWidth()/2 - MeasureText("PRESS [UP] AND [DOWN] TO ADJUST THE RADIUS", 20)/2, GetScreenHeight()/2 - 50, 20, GRAY);
+            DrawText("PRESS [LEFT_MOUSE] TO DRAW\nPRESS [CTRL] + [C] TO RENEW THE CANVAS\nPRESS [RIGHT_MOUSE] TO EREASE\nPRESS [LEFT] OR [RIGHT] TO SWITCH COLOR\n          or use [1]-[9]\nPRESS [UP] AND [DOWN] TO ADJUST THE RADIUS\n           (OR USING THE MOUSE WHEEL)\nPRESS [S] TO SAVE\nPRESS [ENTER] TO START DRAWING", GetScreenWidth()/2 - MeasureText("PRESS [UP] AND [DOWN] TO ADJUST THE RADIUS", 20)/2, GetScreenHeight()/2 - 85, 20, GRAY);
         }
         else if (startDraw) {
             DrawTextureRec(mousecanvas.texture, 
@@ -211,8 +214,8 @@ int main(void)
             if (hasSaved){
                 if(showLoadMessage){
                 DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(RAYWHITE, 0.8f));
-                DrawRectangle(0, 150, GetScreenWidth(), 80, BLACK);
-                DrawText("Saved Work Detected, Wanna Load It? (Y/n)", 150, 180, 20, RAYWHITE);
+                DrawRectangle(0, 185, GetScreenWidth(), 80, BLACK);
+                DrawText("Saved Work Detected, Wanna Load It? (Y/n)", 180, 215, 20, RAYWHITE);
                 }
 
                 if (IsKeyPressed(KEY_Y)){
@@ -222,11 +225,21 @@ int main(void)
                     EndTextureMode();
                     UnloadImage(img);
                     showLoadMessage = false;
+                    showSuccessMessage = true;
                 }
 
-                if (IsKeyPressed(KEY_N)) {
+                else if (IsKeyPressed(KEY_N)) {
                     showLoadMessage = false;
                 }
+
+                if (showSuccessMessage) {
+                    DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(RAYWHITE, 0.8f));
+                    DrawText("Saved Work Loaded Successfully", (GetScreenWidth()-MeasureText("Saved Work Loaded Successfully",20))/2, 215, 20, BLACK);                
+                    showSuccessMessageTimer++;
+                    if (showSuccessMessageTimer > 240) {
+                        showSuccessMessage = false;
+                    }
+                }//显示成功信息,等待2s
             }
         
             DrawCircle((int)mousePos.x, (int)mousePos.y, brushSize, colors[colorUsed]);
@@ -243,8 +256,8 @@ int main(void)
             if (showSaveMessage)
             {
                 DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(RAYWHITE, 0.8f));
-                DrawRectangle(0, 150, GetScreenWidth(), 80, BLACK);
-                DrawText("IMAGE SAVED!", 150, 180, 20, RAYWHITE);
+                DrawRectangle(0, 185, GetScreenWidth(), 80, BLACK);
+                DrawText("IMAGE SAVED!", (GetScreenWidth()-MeasureText("IMAGE SAVED!", 20))/2, 215, 20, RAYWHITE);
             }
         }
 
