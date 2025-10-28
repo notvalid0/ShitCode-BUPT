@@ -223,6 +223,10 @@ int main(void)
                     UnloadImage(img);
                     showLoadMessage = false;
                 }
+
+                if (IsKeyPressed(KEY_N)) {
+                    showLoadMessage = false;
+                }
             }
         
             DrawCircle((int)mousePos.x, (int)mousePos.y, brushSize, colors[colorUsed]);
