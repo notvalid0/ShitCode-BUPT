@@ -1,10 +1,10 @@
 #include <raylib.h>
 #include <stdio.h>
-#include "windows.h"
-#include "canvas.h"
-#include "ui.h"
-#include "hint.h"
-#include "startpage.h"
+#include "init/windows.h"
+#include "init/canvas.h"
+#include "ui/ui.h"
+#include "hint/hint.h"
+#include "startpage/startpage.h"
 
 int main(void) {
     // 初始化窗口和画布
