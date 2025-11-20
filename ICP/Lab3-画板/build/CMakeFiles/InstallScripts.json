@@ -1,0 +1,11 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/houmingxuan/\u6587\u6863/Study/raylib-quickstart-main/build/cmake_install.cmake",
+		"/home/houmingxuan/\u6587\u6863/Study/raylib-quickstart-main/build/raylib/cmake_install.cmake",
+		"/home/houmingxuan/\u6587\u6863/Study/raylib-quickstart-main/build/raylib/external/glfw/cmake_install.cmake",
+		"/home/houmingxuan/\u6587\u6863/Study/raylib-quickstart-main/build/raylib/external/glfw/src/cmake_install.cmake",
+		"/home/houmingxuan/\u6587\u6863/Study/raylib-quickstart-main/build/examples/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -1,0 +1,143 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install",
+			"include"
+		],
+		"files" : 
+		[
+			"cmake/InstallConfigurations.cmake",
+			"src/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 118,
+				"parent" : 0
+			},
+			{
+				"file" : 0,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 23,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 24,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 25,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 30,
+				"parent" : 2
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"raylib/libraylib.a"
+			],
+			"targetId" : "raylib::@5003b8f497eeabc0006e",
+			"targetIndex" : 81,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "include",
+			"paths" : 
+			[
+				"src/raylib.h",
+				"src/rcamera.h",
+				"src/rlgl.h",
+				"src/raymath.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "lib/pkgconfig",
+			"paths" : 
+			[
+				"/home/houmingxuan/\u6587\u6863/Study/raylib-quickstart-main/build/raylib/raylib.pc"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 5,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/raylib",
+			"paths" : 
+			[
+				"/home/houmingxuan/\u6587\u6863/Study/raylib-quickstart-main/build/raylib/raylib-config-version.cmake"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 6,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/raylib",
+			"paths" : 
+			[
+				"/home/houmingxuan/\u6587\u6863/Study/raylib-quickstart-main/build/raylib/raylib-config-version.cmake",
+				"/home/houmingxuan/\u6587\u6863/Study/raylib-quickstart-main/build/raylib/raylib-config.cmake"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 7,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/raylib",
+			"exportName" : "raylib-targets",
+			"exportTargets" : 
+			[
+				{
+					"id" : "raylib::@5003b8f497eeabc0006e",
+					"index" : 81
+				}
+			],
+			"paths" : 
+			[
+				"raylib/CMakeFiles/Export/3f9a69e8808e76b29b64bee1688b3b35/raylib-targets.cmake"
+			],
+			"type" : "export"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "raylib",
+		"source" : "src"
+	}
+}

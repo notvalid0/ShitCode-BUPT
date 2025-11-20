@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20251020-1126-Experimental"
+	Name="(empty)"
+	Generator="ctest-4.1.2"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="cachyos-x8664"
+	OSRelease="6.17.1-2-cachyos"
+	OSVersion="#1 SMP PREEMPT_DYNAMIC Mon, 06 Oct 2025 23:26:58 +0000"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="61"
+	ModelName="Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz"
+	ProcessorCacheSize="3072"
+	NumberOfLogicalCPU="4"
+	NumberOfPhysicalCPU="2"
+	TotalVirtualMemory="20059"
+	TotalPhysicalMemory="11868"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="2494.11"
+	>
+	<Testing>
+		<StartDateTime>Oct 22 18:43 CST</StartDateTime>
+		<StartTestTime>1761129829</StartTestTime>
+		<TestList/>
+		<EndDateTime>Oct 22 18:43 CST</EndDateTime>
+		<EndTestTime>1761129829</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>
