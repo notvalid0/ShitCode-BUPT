@@ -31,43 +31,54 @@ void addNewLine(Color color, float radius) {
 
 //绘制三角形
 void addNewTriangle(Color color) {
-    triangleShape triangle;
+    static triangleShape triangle;
     static int isFirstTriangle = 0;
     triangle.color = color;
     if(isFirstTriangle == 0 && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         triangle.point1 = GetMousePosition();
         isFirstTriangle = 1;
     }
-    if(isFirstTriangle == 1&&IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-        triangle.point2 = GetMousePosition();
-        isFirstTriangle = 2;
+    else if(isFirstTriangle == 1) {
+         DrawLineEx(triangle.point1, GetMousePosition(), 5.0f, color);
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+            triangle.point2 = GetMousePosition();
+            isFirstTriangle = 2;
+        }
     }
-    if(isFirstTriangle == 2&&IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-        triangle.point3 = GetMousePosition();
-        storeTriangle(triangle);
-        isFirstTriangle = 0;
+    else if(isFirstTriangle == 2) {
+        DrawLineEx(triangle.point1, triangle.point2, 3.0f, color);
+        DrawLineEx(triangle.point1, GetMousePosition(), 3.0f, color);
+        DrawLineEx(triangle.point2, GetMousePosition(), 3.0f, color);
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+            triangle.point3 = GetMousePosition();
+            storeTriangle(triangle);
+            isFirstTriangle = 0;
+        }
     }
 }
 
 //绘制矩形
 void addNewSquare(Color color) {
-    squareShape square;
+    static squareShape square;
     static bool isFirstRectangle = true;
     square.color = color;
     if(isFirstRectangle&& IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         square.point1 = GetMousePosition();
         isFirstRectangle = false;
     }
-    if(!isFirstRectangle&&IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+    else if(!isFirstRectangle) {
+        DrawRectangle(square.point1.x, square.point1.y, GetMousePosition().x - square.point1.x, GetMousePosition().y - square.point1.y, color);
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         square.point2 = GetMousePosition();
         storeSquare(square);
         isFirstRectangle = true;
+        }
     }
 }
 
 //绘制多边形
 void addNewPoly(Color color, int sides) {
-    polyShape poly;
+    static polyShape poly;
     static int isFirstPoly = true;
     poly.sides = sides;
     poly.color = color;
@@ -75,9 +86,12 @@ void addNewPoly(Color color, int sides) {
         poly.center = GetMousePosition();
         isFirstPoly = false;
     }
-    if(!isFirstPoly && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-        poly.radius = GetMousePosition().x - poly.center.x;
-        storePoly(poly);
-        isFirstPoly = true;
+    else if(!isFirstPoly) {
+        DrawPoly(poly.center, sides, GetMousePosition().x - poly.center.x, 0, color);
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+            poly.radius = GetMousePosition().x - poly.center.x;
+            storePoly(poly);
+            isFirstPoly = true;   
+        }
     }
 }
