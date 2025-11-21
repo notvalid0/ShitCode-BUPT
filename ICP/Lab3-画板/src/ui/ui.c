@@ -12,12 +12,11 @@ void initToolbar(void) {
     }
 }
 
-void drawToolbar(int colorUsed, float brushSize, Vector2 mousePos) {
+void drawToolbar(int colorUsed, Vector2 mousePos) {
     for (int i = 0; i < 10; i++) {
         DrawRectangleRec(chooseColor[i], colors[i]);
     }
     DrawRectangleLines(10, 10, 30, 30, LIGHTGRAY);
-    DrawCircle((int)mousePos.x, (int)mousePos.y, brushSize, colors[colorUsed]);
 }
 
 void handleEraser(int* colorUsed, int* prevColor) {

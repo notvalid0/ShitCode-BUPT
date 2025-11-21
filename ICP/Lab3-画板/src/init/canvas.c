@@ -9,12 +9,6 @@ void initCanvas(RenderTexture2D* canvas) {
     EndTextureMode();
 }
 
-/**
- * 清除画布内容函数
- * @param canvas 指向要清除的渲染纹理的指针
- * 该函数使用Raylib库中的纹理模式功能来清除画布
- */
-    // 开始纹理模式，对指定的渲染纹理进行操作
 void clearCanvas(RenderTexture2D* canvas) {
     BeginTextureMode(*canvas);
     // 将背景颜色设置为纯白色(RAYWHITE)

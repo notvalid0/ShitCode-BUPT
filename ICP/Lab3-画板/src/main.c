@@ -138,8 +138,14 @@ int main(void) {
             drawSuccessMessage(&showSuccessMessage);
             
             // 绘制工具栏
-            drawToolbar(colorUsed, brushSize, mousePos);
+            drawToolbar(colorUsed, mousePos);
             
+            //绘制画笔光标
+            if (mode == 0 || mode == 1) 
+            DrawCircle(GetMousePosition().x, GetMousePosition().y, brushSize, colors[colorUsed]);
+            else if (mode == 2)
+            DrawCircle(GetMousePosition().x, GetMousePosition().y, 2.5f, colors[colorUsed]) ;
+
             // 绘制提示框
             Rectangle hintRec = {650, 10, 105, 30};
             DrawRectangleLinesEx(hintRec, 2, BLACK);

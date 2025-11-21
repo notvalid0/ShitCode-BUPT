@@ -46,9 +46,9 @@ void addNewTriangle(Color color) {
         }
     }
     else if(isFirstTriangle == 2) {
-        DrawLineEx(triangle.point1, triangle.point2, 3.0f, color);
-        DrawLineEx(triangle.point1, GetMousePosition(), 3.0f, color);
-        DrawLineEx(triangle.point2, GetMousePosition(), 3.0f, color);
+        DrawLineEx(triangle.point1, triangle.point2, 5.0f, color);
+        DrawLineEx(triangle.point1, GetMousePosition(), 5.0f, color);
+        DrawLineEx(triangle.point2, GetMousePosition(), 5.0f, color);
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
             triangle.point3 = GetMousePosition();
             storeTriangle(triangle);
