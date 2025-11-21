@@ -72,19 +72,6 @@ int main(void) {
             if(IsMouseButtonReleased(MOUSE_BUTTON_LEFT)|| IsMouseButtonReleased(MOUSE_BUTTON_RIGHT)) isFirstDraw = true;
         }
 
-        //绘制形状
-        if (mode == 1) {
-            addNewLine(colors[colorUsed], brushSize);
-        }
-        if (mode == 2) {
-            addNewTriangle(colors[colorUsed]);
-        }
-        if (mode == 3) {
-            addNewSquare(colors[colorUsed]);
-        }
-        if (mode == 4) {
-            addNewPoly(colors[colorUsed], sides);
-        }
         // 保存图像
         if (IsKeyPressed(KEY_S)) {
             Image image = LoadImageFromTexture(mousecanvas.texture);
@@ -116,6 +103,20 @@ int main(void) {
             drawAllTriangleShape();
             drawAllSquareShape();
             drawAllPolyShape();
+
+        // 添加形状
+        if (mode == 1) {
+            addNewLine(colors[colorUsed], brushSize);
+        }
+        if (mode == 2) {
+            addNewTriangle(colors[colorUsed]);
+        }
+        if (mode == 3) {
+            addNewSquare(colors[colorUsed]);
+        }
+        if (mode == 4) {
+            addNewPoly(colors[colorUsed], sides);
+        }
             
             // 加载提示
             drawLoadPrompt(&showLoadMessage, &hasSaved, mousecanvas);

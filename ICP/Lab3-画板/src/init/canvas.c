@@ -1,5 +1,6 @@
 #include "canvas.h"
 #include "windows.h"
+#include "../Shapes/shape.h"
 
 void initCanvas(RenderTexture2D* canvas) {
     *canvas = LoadRenderTexture(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -11,6 +12,7 @@ void initCanvas(RenderTexture2D* canvas) {
 void clearCanvas(RenderTexture2D* canvas) {
     BeginTextureMode(*canvas);
     ClearBackground(RAYWHITE);
+    clearShapes(); //来自shape.c
     EndTextureMode();
 }
 

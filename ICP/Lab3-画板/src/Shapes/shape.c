@@ -28,7 +28,9 @@ void storePoly(polyShape poly) {
 
 void drawAllLineShape() {
   for (int i = 0; i < lineCount; i++) {
-    DrawLineEx(lines[i].startPoint, lines[i].endPoint, lines[i].radius, lines[i].color);
+    DrawCircle(lines[i].startPoint.x, lines[i].startPoint.y, lines[i].radius, lines[i].color);
+    DrawLineEx(lines[i].startPoint, lines[i].endPoint, 2*lines[i].radius, lines[i].color);
+    DrawCircle(lines[i].endPoint.x, lines[i].endPoint.y, lines[i].radius, lines[i].color);
   }
 }
 
@@ -51,4 +53,11 @@ void drawAllPolyShape() {
   for (int i = 0; i < polyCount; i++) {
     DrawPoly(polys[i].center, polys[i].sides, polys[i].radius, polys[i].rotation, polys[i].color);  
   }
+}
+
+void clearShapes(){
+  lineCount = 0;
+  triangleCount = 0;
+  squareCount = 0;
+  polyCount = 0;
 }

@@ -18,7 +18,8 @@ void addNewLine(Color color, float radius) {
 
     if (hasStart && IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
         Vector2 mouse = GetMousePosition();
-        DrawLineV(line.startPoint, mouse, color);
+        DrawCircle(line.startPoint.x, line.startPoint.y, radius, color);
+        DrawLineEx(line.startPoint, mouse, 2*radius, line.color);
     }
 
     if (hasStart && IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {

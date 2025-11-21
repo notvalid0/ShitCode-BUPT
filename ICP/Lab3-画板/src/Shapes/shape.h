@@ -47,3 +47,5 @@ void drawAllLineShape();
 void drawAllTriangleShape();
 void drawAllSquareShape();
 void drawAllPolyShape();
+
+void clearShapes();
