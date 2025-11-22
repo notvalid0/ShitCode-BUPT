@@ -50,7 +50,13 @@ void addNewTriangle(Color color) {
         DrawLineEx(triangle.point1, GetMousePosition(), 5.0f, color);
         DrawLineEx(triangle.point2, GetMousePosition(), 5.0f, color);
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+            if (triangle.point3.y <= triangle.point1.y && triangle.point3.y <= triangle.point2.y) {
+                triangle.point3 = triangle.point1;
+                triangle.point1 = GetMousePosition();
+            }
+            else {
             triangle.point3 = GetMousePosition();
+            }
             storeTriangle(triangle);
             isFirstTriangle = 0;
         }
@@ -63,16 +69,29 @@ void addNewSquare(Color color) {
     static bool isFirstRectangle = true;
     square.color = color;
     if(isFirstRectangle&& IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-        square.point1 = GetMousePosition();
+           square.point1 = GetMousePosition();
         isFirstRectangle = false;
     }
     else if(!isFirstRectangle) {
-        DrawRectangle(square.point1.x, square.point1.y, GetMousePosition().x - square.point1.x, GetMousePosition().y - square.point1.y, color);
-        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-        square.point2 = GetMousePosition();
-        storeSquare(square);
-        isFirstRectangle = true;
-        }
+        if ((GetMousePosition().x - square.point1.x)*(GetMousePosition().y - square.point1.y) > 0){
+            DrawRectangle(square.point1.x, square.point1.y, GetMousePosition().x - square.point1.x, GetMousePosition().y - square.point1.y, color);
+            if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+            square.point2 = GetMousePosition();
+            storeSquare(square);
+            isFirstRectangle = true;
+            }
+       }
+        else if ((GetMousePosition().x - square.point1.x) * (GetMousePosition().y - square.point1.y) < 0){
+            DrawRectangle(GetMousePosition().x, square.point1.y, square.point1.x - GetMousePosition().x, GetMousePosition().y - square.point1.y, color);
+            if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+                square.point2.x = square.point1.x;
+                square.point1.x = GetMousePosition().x;
+                square.point2.y = GetMousePosition().y;
+                storeSquare(square);
+                isFirstRectangle = true;
+            }
+       
+       }
     }
 }
 
@@ -88,7 +107,7 @@ void addNewPoly(Color color, int sides) {
     }
     else if(!isFirstPoly) {
         DrawPoly(poly.center, sides, GetMousePosition().x - poly.center.x, 0, color);
-        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+        if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
             poly.radius = GetMousePosition().x - poly.center.x;
             storePoly(poly);
             isFirstPoly = true;   
