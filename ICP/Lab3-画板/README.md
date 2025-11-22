@@ -25,6 +25,9 @@
 
 ## CHANGELOG
 
+### 3.5.4
+Update: 新增Sides选择，(Alt驱动快捷键)
+
 ### 3.5.3
 Update: 尝试修复DrawTriangle函数无法绘制的BUG失败（不知道函数具体运行机制）
 

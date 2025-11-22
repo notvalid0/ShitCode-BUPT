@@ -96,21 +96,32 @@ void addNewSquare(Color color) {
 }
 
 //绘制多边形
-void addNewPoly(Color color, int sides) {
+void addNewPoly(Color color) {
     static polyShape poly;
     static int isFirstPoly = true;
-    poly.sides = sides;
+    static int sides = 6;
     poly.color = color;
     if(isFirstPoly && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         poly.center = GetMousePosition();
         isFirstPoly = false;
     }
     else if(!isFirstPoly) {
-        DrawPoly(poly.center, sides, GetMousePosition().x - poly.center.x, 0, color);
+        DrawPoly(poly.center, chooseSides(sides), GetMousePosition().x - poly.center.x, 0, color);
         if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
             poly.radius = GetMousePosition().x - poly.center.x;
+            poly.sides = chooseSides(sides);
             storePoly(poly);
             isFirstPoly = true;   
         }
     }
+}
+
+//选择Poly对应的边数
+int chooseSides(int sides) {
+    if (IsKeyPressed(KEY_FIVE) && IsKeyPressed(KEY_LEFT_ALT)) sides = 5;
+    if (IsKeyPressed(KEY_SIX) && IsKeyPressed(KEY_LEFT_ALT)) sides = 6;
+    if (IsKeyPressed(KEY_SEVEN) && IsKeyPressed(KEY_LEFT_ALT)) sides = 7;
+    if (IsKeyPressed(KEY_EIGHT) && IsKeyPressed(KEY_LEFT_ALT)) sides = 8;
+    if (IsKeyPressed(KEY_NINE) && IsKeyPressed(KEY_LEFT_ALT)) sides = 9;
+    return sides;
 }

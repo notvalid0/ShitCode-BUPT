@@ -28,7 +28,6 @@ int main(void) {
     bool showLoadMessage = false;
     bool showSuccessMessage = false;
     int mode = 0;
-    int sides = 6; // 默认多边形边数
 
     //显示开始屏幕
     showStartPage();
@@ -115,7 +114,7 @@ int main(void) {
             addNewSquare(colors[colorUsed]);
         }
         if (mode == 4) {
-            addNewPoly(colors[colorUsed], sides);
+            addNewPoly(colors[colorUsed]);
         }
             
             // 加载提示

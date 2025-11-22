@@ -4,4 +4,6 @@
 void addNewLine (Color color, float radius) ;
 void addNewTriangle(Color color);
 void addNewSquare(Color color);
-void addNewPoly(Color color, int sides);
+void addNewPoly(Color color);
+
+int chooseSides(int sides);
