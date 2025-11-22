@@ -2,7 +2,7 @@
 #include "shape.h"
 #include <raylib.h>
 #include <stdbool.h>
-
+#include <math.h>
 
 //绘制直线
 void addNewLine(Color color, float radius) {
@@ -100,16 +100,22 @@ void addNewPoly(Color color) {
     static polyShape poly;
     static int isFirstPoly = true;
     static int sides = 6;
+    chooseSides(&sides);
     poly.color = color;
     if(isFirstPoly && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         poly.center = GetMousePosition();
         isFirstPoly = false;
     }
     else if(!isFirstPoly) {
-        DrawPoly(poly.center, chooseSides(sides), GetMousePosition().x - poly.center.x, 0, color);
+        // 3.6.1新增：多边形跟随鼠标
+        float radius = sqrt((GetMousePosition().x - poly.center.x) * (GetMousePosition().x - poly.center.x) + (GetMousePosition().y - poly.center.y) * (GetMousePosition().y - poly.center.y));
+        float rotation = atan2(GetMousePosition().y - poly.center.y, GetMousePosition().x - poly.center.x)* (180.0f / PI);
+        DrawPoly(poly.center, sides, radius, rotation, color);
         if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
             poly.radius = GetMousePosition().x - poly.center.x;
-            poly.sides = chooseSides(sides);
+            poly.sides = sides;
+            poly.rotation = rotation;
+            poly.radius = radius;
             storePoly(poly);
             isFirstPoly = true;   
         }
@@ -117,11 +123,12 @@ void addNewPoly(Color color) {
 }
 
 //选择Poly对应的边数
-int chooseSides(int sides) {
-    if (IsKeyPressed(KEY_FIVE) && IsKeyPressed(KEY_LEFT_ALT)) sides = 5;
-    if (IsKeyPressed(KEY_SIX) && IsKeyPressed(KEY_LEFT_ALT)) sides = 6;
-    if (IsKeyPressed(KEY_SEVEN) && IsKeyPressed(KEY_LEFT_ALT)) sides = 7;
-    if (IsKeyPressed(KEY_EIGHT) && IsKeyPressed(KEY_LEFT_ALT)) sides = 8;
-    if (IsKeyPressed(KEY_NINE) && IsKeyPressed(KEY_LEFT_ALT)) sides = 9;
-    return sides;
+void chooseSides(int* sides) {
+    if (IsKeyDown(KEY_LEFT_ALT)){
+        if (IsKeyPressed(KEY_FIVE)) *sides = 5;
+        else if (IsKeyPressed(KEY_SIX)) *sides = 6;
+        else if (IsKeyPressed(KEY_SEVEN)) *sides = 7;
+        else if (IsKeyPressed(KEY_EIGHT)) *sides = 8;
+        else if (IsKeyPressed(KEY_NINE)) *sides = 9;
+    }
 }

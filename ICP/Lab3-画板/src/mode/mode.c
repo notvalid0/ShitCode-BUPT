@@ -1,5 +1,8 @@
 #include "mode.h"
+#include "../hint/hint.h"
 #include <raylib.h>
+
+static bool showPolyHint = false;
 
 void switchMode(int *mode) {
     if (IsKeyDown(KEY_LEFT_SHIFT) && IsKeyPressed(KEY_ONE)) {
@@ -16,5 +19,7 @@ void switchMode(int *mode) {
     }
     else if(IsKeyDown(KEY_LEFT_SHIFT) && IsKeyPressed(KEY_FIVE)){
         *mode = 4;
+        showPolyHint = true;
+        drawPolyHint(&showPolyHint);
     }
 }

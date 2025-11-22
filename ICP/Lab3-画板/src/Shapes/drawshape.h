@@ -6,4 +6,4 @@ void addNewTriangle(Color color);
 void addNewSquare(Color color);
 void addNewPoly(Color color);
 
-int chooseSides(int sides);
+void chooseSides(int* sides);
