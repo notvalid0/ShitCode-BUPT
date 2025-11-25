@@ -3,7 +3,7 @@
 
 void initWindow(void) {
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "鼠鼠画板");
-    SetTargetFPS(120);
+    SetTargetFPS(60);
 }
 
 void closeWindow(void) {

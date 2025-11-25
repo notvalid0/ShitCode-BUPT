@@ -10,9 +10,9 @@ typedef struct {
 } lineShape;
 
 typedef struct {
-  Vector2 point1;
-  Vector2 point2;
-  Vector2 point3;
+  Vector2 point1[6];
+  Vector2 point2[6];
+  Vector2 point3[6];
   Color color;
 } triangleShape;
 

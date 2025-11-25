@@ -35,22 +35,37 @@ void addNewTriangle(Color color) {
     static int isFirstTriangle = 0;
     triangle.color = color;
     if(isFirstTriangle == 0 && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-        triangle.point1 = GetMousePosition();
+        triangle.point1[0] = GetMousePosition();
+        triangle.point1[1] = GetMousePosition();
+        triangle.point2[2] = GetMousePosition();
+        triangle.point2[3] = GetMousePosition();
+        triangle.point3[4] = GetMousePosition();
+        triangle.point3[5] = GetMousePosition();
         isFirstTriangle = 1;
     }
     else if(isFirstTriangle == 1) {
-         DrawLineEx(triangle.point1, GetMousePosition(), 5.0f, color);
+         DrawLineEx(triangle.point1[0], GetMousePosition(), 5.0f, color);
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-            triangle.point2 = GetMousePosition();
+            triangle.point2[0] = GetMousePosition();
+            triangle.point3[1] = GetMousePosition();
+            triangle.point3[2] = GetMousePosition();
+            triangle.point1[3] = GetMousePosition();
+            triangle.point1[4] = GetMousePosition();
+            triangle.point2[5] = GetMousePosition();
             isFirstTriangle = 2;
         }
     }
     else if(isFirstTriangle == 2) {
-        DrawLineEx(triangle.point1, triangle.point2, 5.0f, color);
-        DrawLineEx(triangle.point1, GetMousePosition(), 5.0f, color);
-        DrawLineEx(triangle.point2, GetMousePosition(), 5.0f, color);
+        DrawLineEx(triangle.point1[0], triangle.point2[0], 5.0f, color);
+        DrawLineEx(triangle.point1[0], GetMousePosition(), 5.0f, color);
+        DrawLineEx(triangle.point2[0], GetMousePosition(), 5.0f, color);
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-            triangle.point3 = GetMousePosition();
+            triangle.point3[0] = GetMousePosition();
+            triangle.point2[1] = GetMousePosition();
+            triangle.point1[2] = GetMousePosition();
+            triangle.point3[3] = GetMousePosition();
+            triangle.point2[4] = GetMousePosition();
+            triangle.point1[5] = GetMousePosition();
             storeTriangle(triangle);
             isFirstTriangle = 0;
         }

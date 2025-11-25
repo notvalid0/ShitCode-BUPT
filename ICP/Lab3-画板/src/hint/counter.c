@@ -3,7 +3,7 @@
 bool timeCounter(){
     static int showTime = 0;
     showTime++;
-    if (showTime >= 240) {
+    if (showTime >= 120) {
         showTime = 0;
         return false;
     }

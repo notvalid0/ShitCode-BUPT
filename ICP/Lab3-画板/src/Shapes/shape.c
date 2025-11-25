@@ -37,7 +37,8 @@ void drawAllLineShape() {
 
 void drawAllTriangleShape() {
   for (int i = 0; i < triangleCount; i++) {
-    DrawTriangle(triangles[i].point1, triangles[i].point2, triangles[i].point3, triangles[i].color);
+    for (int j = 0; j < 6; j++)
+      DrawTriangle(triangles[i].point1[j], triangles[i].point2[j], triangles[i].point3[j], triangles[i].color);
   }
 }
 
