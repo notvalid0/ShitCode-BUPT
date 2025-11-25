@@ -8,6 +8,7 @@
 #include "startpage/startpage.h"
 #include "Shapes/drawshape.h"
 #include "mode/mode.h"
+#include "erase/erase.h"
 
 int main(void) {
     // 初始化窗口和画布
@@ -48,7 +49,7 @@ int main(void) {
         handleColorSwitching(&colorUsed);
         
         // 处理橡皮擦模式
-        handleEraser(&colorUsed, &prevColor);
+        eraser(&colorUsed, &prevColor);
         
         // 处理画笔大小        
         handleBrushSize(&brushSize);
@@ -58,6 +59,8 @@ int main(void) {
             clearCanvas(&mousecanvas);
             isFirstDraw = true;
         }
+
+        shapeErase(mode);
 
         // 处理模式切换
         switchMode(&mode, &showPolyHint);

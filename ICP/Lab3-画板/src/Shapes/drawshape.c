@@ -50,13 +50,7 @@ void addNewTriangle(Color color) {
         DrawLineEx(triangle.point1, GetMousePosition(), 5.0f, color);
         DrawLineEx(triangle.point2, GetMousePosition(), 5.0f, color);
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-            if (triangle.point3.y <= triangle.point1.y && triangle.point3.y <= triangle.point2.y) {
-                triangle.point3 = triangle.point1;
-                triangle.point1 = GetMousePosition();
-            }
-            else {
             triangle.point3 = GetMousePosition();
-            }
             storeTriangle(triangle);
             isFirstTriangle = 0;
         }
@@ -90,8 +84,7 @@ void addNewSquare(Color color) {
                 storeSquare(square);
                 isFirstRectangle = true;
             }
-       
-       }
+        }
     }
 }
 

@@ -49,3 +49,4 @@ void drawAllSquareShape();
 void drawAllPolyShape();
 
 void clearShapes();
+void shapeErase(int mode);

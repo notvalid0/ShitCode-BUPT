@@ -25,8 +25,18 @@
 
 ## CHANGELOG
 
+### 3.8.2
+Update: 尝试使用Release替代Press解决三角形丢点问题，失败
+
+### 3.8.1
+Update: 完善Shape撤销功能
+Bug: 上层总是叠加于下层之上（放弃）；三角形偶尔无法绘制
+
+### 3.8.0
+Update: 新增Shape撤销功能
+
 ### 3.7.2
-Update: 完善tPolyHint提示
+Update: 完善PolyHint提示
 
 ### 3.7.1
 Update: 增添Mode提示框

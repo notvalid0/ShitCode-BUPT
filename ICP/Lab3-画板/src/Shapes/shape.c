@@ -1,5 +1,6 @@
 #include "shape.h"
 #include <raylib.h>
+#include "../erase/erase.h"
 
 #define MAX_SHAPE 100
 
@@ -60,4 +61,15 @@ void clearShapes(){
   triangleCount = 0;
   squareCount = 0;
   polyCount = 0;
+}
+
+
+//切换Shape模式All in one
+void shapeErase(int mode){
+    if(IsKeyDown(KEY_LEFT_CONTROL)&&IsKeyPressed(KEY_Z)){
+        if (mode == 1) eraseLine(&lineCount);
+        else if (mode == 2) eraseTriangle(&triangleCount);
+        else if (mode == 3) eraseSquare(&squareCount);
+        else if (mode == 4) erasePoly(&polyCount);
+    }
 }
