@@ -28,6 +28,7 @@ int main(void) {
     bool showLoadMessage = false;
     bool showSuccessMessage = false;
     int mode = 0;
+    bool showPolyHint = false;
 
     //显示开始屏幕
     showStartPage();
@@ -59,7 +60,7 @@ int main(void) {
         }
 
         // 处理模式切换
-        switchMode(&mode);
+        switchMode(&mode, &showPolyHint);
 
         // 绘制到 画布
         if (mode == 0) {
@@ -145,6 +146,9 @@ int main(void) {
             else if (mode == 2)
             DrawCircle(GetMousePosition().x, GetMousePosition().y, 2.5f, colors[colorUsed]) ;
 
+            // 绘制Mode框
+            showMode(mode);
+
             // 绘制提示框
             Rectangle hintRec = {650, 10, 105, 30};
             DrawRectangleLinesEx(hintRec, 2, BLACK);
@@ -153,6 +157,8 @@ int main(void) {
             // 绘制保存消息
             drawSaveMessage(&showSaveMessage);
 
+            // 绘制PolyHint
+            drawPolyHint(&showPolyHint);
         }
         EndDrawing();
     }

@@ -25,6 +25,12 @@
 
 ## CHANGELOG
 
+### 3.7.2
+Update: 完善tPolyHint提示
+
+### 3.7.1
+Update: 增添Mode提示框
+
 ### 3.7.0
 Update: 完善提示机制（正在施工）
 
