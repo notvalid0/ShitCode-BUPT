@@ -1,0 +1,212 @@
+/* pages/card/card.wxss */
+/* 个人名片页面样式 */
+
+/* ========== 页面容器 ========== */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  padding: 40rpx 30rpx;
+  box-sizing: border-box;
+}
+
+/* ========== 头部区域 ========== */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 0 40rpx;
+}
+
+/* 头像样式 */
+.avatar {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 50%;
+  border: 6rpx solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.15);
+  background-color: #e0e0e0;
+}
+
+/* 姓名样式 */
+.name {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: 30rpx;
+  letter-spacing: 4rpx;
+}
+
+/* 专业年级样式 */
+.major-grade {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 16rpx;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10rpx 30rpx;
+  border-radius: 30rpx;
+}
+
+/* ========== 通用区块样式 ========== */
+.section {
+  background: #ffffff;
+  border-radius: 24rpx;
+  margin-top: 30rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+}
+
+/* 区块标题 */
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+  margin-bottom: 20rpx;
+}
+
+/* ========== 联系方式样式 ========== */
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* 联系方式图标容器 */
+.contact-icon-wrap {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24rpx;
+}
+
+/* 使用不同颜色区分不同类型 */
+.contact-item:nth-child(1) .contact-icon-wrap {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.contact-item:nth-child(2) .contact-icon-wrap {
+  background: linear-gradient(135deg, #07c160 0%, #10b981 100%);
+}
+
+.contact-item:nth-child(3) .contact-icon-wrap {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.contact-item:nth-child(4) .contact-icon-wrap {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* 图标文字 */
+.contact-icon {
+  font-size: 28rpx;
+  color: #ffffff;
+}
+
+/* 图标符号（使用伪元素或文字模拟） */
+.icon-phone::before {
+  content: "📞";
+}
+
+.icon-wechat::before {
+  content: "💬";
+}
+
+.icon-email::before {
+  content: "📧";
+}
+
+.icon-qq::before {
+  content: "🐧";
+}
+
+/* 联系方式内容区域 */
+.contact-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-label {
+  font-size: 26rpx;
+  color: #999999;
+  margin-bottom: 6rpx;
+}
+
+.contact-value {
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+/* 箭头 */
+.contact-arrow {
+  width: 40rpx;
+  text-align: center;
+}
+
+.arrow-icon {
+  font-size: 40rpx;
+  color: #cccccc;
+}
+
+/* ========== 技能标签样式 ========== */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.skill-tag {
+  display: inline-block;
+  padding: 14rpx 28rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  font-size: 26rpx;
+  border-radius: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(102, 126, 234, 0.3);
+}
+
+/* ========== 个人简介样式 ========== */
+.introduction-content {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+/* 复制按钮 */
+.copy-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30rpx;
+  padding: 20rpx 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 40rpx;
+}
+
+.copy-btn text {
+  font-size: 28rpx;
+  color: #ffffff;
+}
+
+/* ========== 底部版权 ========== */
+.footer {
+  text-align: center;
+  padding: 60rpx 0 30rpx;
+}
+
+.footer text {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.6);
+}

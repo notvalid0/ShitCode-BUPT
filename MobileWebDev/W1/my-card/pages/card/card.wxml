@@ -1,0 +1,105 @@
+<!--pages/card/card.wxml-->
+<!-- 个人名片页面模板 -->
+<!-- 所有数据均来自 data 对象，无硬编码文字 -->
+
+<view class="container">
+  
+  <!-- ========== 头部区域：头像 + 基本信息 ========== -->
+  <view class="header">
+    <!-- 头像 -->
+    <image 
+      class="avatar" 
+      src="{{avatarUrl}}" 
+      mode="aspectFill"
+    />
+    
+    <!-- 姓名 -->
+    <view class="name">{{name}}</view>
+    
+    <!-- 专业年级 -->
+    <view class="major-grade">{{majorGrade}}</view>
+  </view>
+  
+  <!-- ========== 联系方式区域 ========== -->
+  <view class="section">
+    <!-- 区块标题 -->
+    <view class="section-title">{{sectionTitles.contact}}</view>
+    
+    <!-- 联系方式列表 -->
+    <!-- 
+      wx:for 解析：
+      wx:for="{{contacts}}" - 遍历 contacts 数组
+      wx:key="type" - 使用每项的 type 属性作为唯一标识，提高渲染性能
+      wx:for-item="contact" - 指定循环项的变量名为 contact（默认为 item）
+      wx:for-index="idx" - 指定索引变量名为 idx（默认为 index）
+    -->
+    <view 
+      class="contact-item"
+      wx:for="{{contacts}}"
+      wx:key="type"
+      bindtap="handleContactTap"
+      data-type="{{item.type}}"
+      data-value="{{item.value}}"
+    >
+      <!-- 联系方式图标 -->
+      <view class="contact-icon-wrap">
+        <text class="contact-icon icon-{{item.type}}"></text>
+      </view>
+      
+      <!-- 联系方式内容 -->
+      <view class="contact-content">
+        <text class="contact-label">{{item.label}}</text>
+        <text class="contact-value">{{item.value}}</text>
+      </view>
+      
+      <!-- 箭头指示 -->
+      <view class="contact-arrow">
+        <text class="arrow-icon">›</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- ========== 技能标签区域 ========== -->
+  <view class="section">
+    <!-- 区块标题 -->
+    <view class="section-title">{{sectionTitles.skills}}</view>
+    
+    <!-- 技能标签列表 -->
+    <view class="skills-container">
+      <!-- 
+        wx:for 解析：
+        遍历 skills 数组，使用 *this 作为 key（因为数组项是简单类型）
+        *this 表示使用数组项本身的值作为唯一标识
+      -->
+      <view 
+        class="skill-tag"
+        wx:for="{{skills}}"
+        wx:key="*this"
+      >
+        {{item}}
+      </view>
+    </view>
+  </view>
+  
+  <!-- ========== 个人简介区域 ========== -->
+  <view class="section">
+    <!-- 区块标题 -->
+    <view class="section-title">{{sectionTitles.introduction}}</view>
+    
+    <!-- 简介内容 -->
+    <view class="introduction-content">
+      <text>{{introduction}}</text>
+    </view>
+    
+    <!-- 复制按钮 -->
+    <view class="copy-btn" bindtap="copyIntroduction">
+      <text>复制简介</text>
+    </view>
+  </view>
+  
+  <!-- ========== 底部版权 ========== -->
+  <view class="footer">
+    <text>{{copyright}}</text>
+  </view>
+  
+</view>
