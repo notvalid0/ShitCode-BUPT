@@ -1,0 +1,5 @@
+{
+    "model_endpoint": "https://api.longcat.chat/openai/v1/chat/completions",
+    "api_key": "ak_2lj9rz9WX5L58OJ0BY7Ch7zq5Xb33",
+    "model_name": "LongCat-Flash-Lite"
+}
