@@ -58,10 +58,7 @@ cmake ..
 # 3. 编译
 make -j$(nproc)
 
-# 4. 复制config.json
-cp ../config.json ./
-
-# 5. 运行
+# 4. 运行
 ./NLTools
 ```
 
