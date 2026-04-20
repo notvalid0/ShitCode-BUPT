@@ -9,7 +9,7 @@ public:
   // 参考https://www.cnblogs.com/ow-dwh/p/17153582.html
   static std::string generatePrompt(const std::string &input, const int &mode,
                  const std::string &inputFile,
-                 const std::string &outputFile); // 需要依据输入生成Prompt
+                 const std::string &outputFile, const std::string &outputDir); // 需要依据输入生成Prompt
 
   // 发送curl请求，(如果可以)直接返回输string
   static std::string sendRequest(const std::string &prompt,

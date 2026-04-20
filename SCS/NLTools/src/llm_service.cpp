@@ -8,7 +8,7 @@
 std::string LLMService::generatePrompt(const std::string &input,
                                        const int &mode,
                                        const std::string &inputFile,
-                                       const std::string &outputFile) {
+                                       const std::string &outputFile, const std::string &outputDir) {
   std::string tool = (mode == 0) ? "ffmpeg" : "pandoc";
   std::string prompt = "你是一个" + tool +
                        "专家。请将用户的自然语言描述转换为" + tool +
@@ -26,6 +26,7 @@ std::string LLMService::generatePrompt(const std::string &input,
                        inputFile +
                        "\n"
                        "输出文件：" +
+                       outputDir + 
                        outputFile +
                        "\n"
                        "用户需求：" +
