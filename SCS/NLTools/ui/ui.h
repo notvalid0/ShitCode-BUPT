@@ -1,9 +1,9 @@
 #pragma once
 #include <iostream>
 
-class TUI{
+class TUI {
 private:
-  int mode = 0; //默认为FFMpeg
+  int mode = 0; // 默认为FFMpeg
 public:
   TUI();
   void showTUI();
@@ -13,11 +13,11 @@ public:
 
   void genButtonEvent(bool buttonPushed); // 关于第一个按钮的设置
 
-  int getMode();
-  std::string getInputFile();
-  std::string getOutputDir();
-  std::string getOutputFile();
-  std::string getUsrInput();
+  int getMode() { return mode; };
+  static std::string getInputFile();
+  static std::string getOutputDir();
+  static std::string getOutputFile();
+  static std::string getUsrInput();
 
   bool wannaExec = false;
   void execCmd(std::string &cmd);

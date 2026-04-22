@@ -2,7 +2,7 @@
 
 ### About
 
-BUPT大一计院学生计导课Coding成果
+BUPT计院学生计导课Coding成果
 
 ---
 
