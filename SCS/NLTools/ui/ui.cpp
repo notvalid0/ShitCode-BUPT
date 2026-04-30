@@ -12,9 +12,10 @@ void TUI::buttonEvent() {
   // 代码参考
   // https://arthursonzogni.github.io/FTXUI/examples_2component_2button_animated_8cpp-example.html
   bool buttonPushed = false;
+  std::string cmd;
   auto buttons = ftxui::Container::Horizontal({
       Button(
-          "生成", [&] { TUI::genButtonEvent(buttonPushed); },
+          "生成", [&] { TUI::genButtonEvent(buttonPushed, cmd); },
           ftxui::ButtonOption::Animated(ftxui::Color::Red)),
       Button(
           "切换模式", [&] { TUI::modeToggle(); },
@@ -25,7 +26,8 @@ void TUI::buttonEvent() {
   });
 }
 
-void TUI::genButtonEvent(bool buttonPushed) {
+// TODO: add static cmd string... etc
+void TUI::genButtonEvent(bool buttonPushed, std::string cmd) {
   if (!buttonPushed) {
     /*生成prompt*/
     int mode = TUI::getMode();
@@ -57,6 +59,7 @@ void TUI::genButtonEvent(bool buttonPushed) {
     if (cmd.empty()) {
       /* TODO: 检测CMD为空则TUI反馈(而非CERR) */
     } else {
+      cmdExec::exec(cmd);
     }
   }
 }

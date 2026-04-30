@@ -3,7 +3,8 @@
 
 class TUI {
 private:
-  int mode = 0; // 默认为FFMpeg
+  static int mode;
+
 public:
   TUI();
   void showTUI();
@@ -11,9 +12,10 @@ public:
   void modeToggle(); // 选择MODE(0 for FFMpeg, 1 for Pandoc)
   void buttonEvent();
 
-  void genButtonEvent(bool buttonPushed); // 关于第一个按钮的设置
+  void genButtonEvent(bool buttonPushed,
+                      std::string cmd); // 关于第一个按钮的设置
 
-  int getMode() { return mode; };
+  static int getMode() { return mode; };
   static std::string getInputFile();
   static std::string getOutputDir();
   static std::string getOutputFile();
