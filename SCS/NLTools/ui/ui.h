@@ -1,27 +1,50 @@
 #pragma once
-#include <iostream>
+
+#include <ftxui/component/component.hpp>
+#include <ftxui/component/screen_interactive.hpp>
+
+#include <string>
+#include <vector>
 
 class TUI {
-private:
-  static int mode;
-
 public:
   TUI();
-  void showTUI();
+  ~TUI();
+  void run();
 
-  void modeToggle(); // 选择MODE(0 for FFMpeg, 1 for Pandoc)
-  void buttonEvent();
+private:
+  struct State {
+    int mode = 0;
+    std::string nlDesc;
+    std::string inputFile;
+    std::string outputFile;
+    std::string outputDir = ".";
+    std::string generatedCmd;
+    std::string statusMsg = "就绪 — 请输入需求后点击「生成命令」";
+    bool isProcessing = false;
+    bool hasGenerated = false;
+  };
+  State state_;
 
-  void genButtonEvent(bool buttonPushed,
-                      std::string cmd); // 关于第一个按钮的设置
+  const std::vector<std::string> modes_ = {"FFmpeg", "Pandoc"};
 
-  static int getMode() { return mode; };
-  static std::string getInputFile();
-  static std::string getOutputDir();
-  static std::string getOutputFile();
-  static std::string getUsrInput();
+  // Components
+  ftxui::Component nl_input_;
+  ftxui::Component in_file_;
+  ftxui::Component out_file_;
+  ftxui::Component out_dir_;
+  ftxui::Component btn_gen_;
+  ftxui::Component btn_exe_;
+  ftxui::Component btn_clr_;
+  ftxui::Component mode_toggle_;
+  ftxui::Component button_bar_;
+  ftxui::Component main_container_;
+  ftxui::Component root_component_;
+  ftxui::ScreenInteractive screen_;
 
-  bool wannaExec = false;
-  void execCmd(std::string &cmd);
-  void delCmd(std::string &cmd);
+  ftxui::Component buildUI();
+
+  void onGenerate();
+  void onExecute();
+  void onClear();
 };

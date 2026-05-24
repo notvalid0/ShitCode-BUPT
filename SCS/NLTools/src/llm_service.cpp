@@ -26,8 +26,7 @@ std::string LLMService::generatePrompt(const std::string &input,
                        inputFile +
                        "\n"
                        "输出文件：" +
-                       outputDir + 
-                       outputFile +
+                       outputDir + "/" + outputFile +
                        "\n"
                        "用户需求：" +
                        input +

@@ -1,5 +1,4 @@
 #include "../include/config.h"
-#include <filesystem>
 #include <fstream> // 读取配置文件
 #include <iostream>
 #include <nlohmann/json.hpp>
@@ -15,11 +14,11 @@ llmConfig llmConfig::load(const std::string &config_file) {
   // 使用JSON便于调用现有函数进行操作
 	json j;			// 创建 json 对象
 
-	// Lab2 修改: 增强鲁棒性
-	std::filesystem::path config_path = {"../config.json"};
-	std::ifstream jfile(config_path);
+	// 使用传入的 config_file 参数，不再硬编码路径
+	std::ifstream jfile(config_file);
 	if(!jfile){
-	  std::cerr << "Config.json Not Found" <<std::endl;
+	  std::cerr << "Config file \"" << config_file << "\" not found" << std::endl;
+	  return llm_config;
 	}
 	
 	jfile >> j;		// 以文件流形式读取 json 文件
