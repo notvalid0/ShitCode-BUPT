@@ -58,7 +58,10 @@ cmake ..
 # 3. 编译
 make -j$(nproc)
 
-# 4. 运行
+# 4. 拷贝config.json
+cp config.json build/
+
+# 5. 运行
 ./NLTools
 ```
 
@@ -74,36 +77,12 @@ make -j$(nproc)
 }
 ```
 
-| 配置项              | 说明             |
-| ---------------- | -------------- |
+| 配置项           | 说明             |
+| ---------------- | --------------   |
 | `model_endpoint` | LLM API 端点 URL |
 | `api_key`        | API 密钥         |
-| `model_name`     | 使用的模型名称        |
+| `model_name`     | 使用的模型名称   |
 
-## 使用方法
-
-```
-1. 选择模式: 0 = FFmpeg, 1 = Pandoc
-2. 输入自然语言描述需求
-3. 输入输入文件路径
-4. 输入输出文件路径
-5. 查看生成的命令
-6. 确认是否执行 (Y/n)
-```
-
-### 使用示例
-
-```
-plz input mode: (0 for ffmpeg, 1 for pandoc) 0
-plz input Natural Language about how you wanna to do with this file
-我想要将input.mp4转换为gif格式
-where's the input file?
-input.mp4
-what about the outputFile?
-output.gif
-output: ffmpeg -i input.mp4 -vf "fps=10,scale=320:-1" output.gif
-Execute? (Y/n) Y
-```
 
 ## 模块说明
 
